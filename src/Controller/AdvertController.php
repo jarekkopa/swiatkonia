@@ -4,9 +4,10 @@ namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use App\Entity\Advert;
+use App\Entity\{Advert, CategoryEntity};
 use Symfony\Component\Form\Extension\Core\Type\{SubmitType, TextType};
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class AdvertController extends Controller
 {
@@ -19,6 +20,9 @@ class AdvertController extends Controller
         ->add('adv_title', TextType::class) // generuję pole tekstowe
         ->add('adv_description', TextType::class) // generuję pole tekstowe
         ->add('price', TextType::class) // generuję pole tekstowe
+        ->add('adv_category', EntityType::class, [ // tu przypisuję do pola USER z encji CommentEntity dane z innej encji (UserEntity)
+            'class' => CategoryEntity::class, // robię to tutaj (jako parametr) - czyli...do pola user z ComemntEnity podpinam cały obiekt UserEntity
+        ])
         ->add('send', SubmitType::class) // generuję przycisk submit
         ->getForm(); // generuję formularz
     

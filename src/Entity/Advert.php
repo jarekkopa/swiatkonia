@@ -31,6 +31,12 @@ class Advert
      */
     private $price;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\CategoryEntity", inversedBy="advert_id")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $adv_category;
+
     public function getId()
     {
         return $this->id;
@@ -68,6 +74,18 @@ class Advert
     public function setPrice($price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getAdvCategory(): ?CategoryEntity
+    {
+        return $this->adv_category;
+    }
+
+    public function setAdvCategory(?CategoryEntity $adv_category): self
+    {
+        $this->adv_category = $adv_category;
 
         return $this;
     }
