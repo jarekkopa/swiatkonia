@@ -43,10 +43,10 @@ class UserController extends Controller
     public function userLogin(Request $request, AuthenticationUtils $authenticationUtils) {
 
         $error = $authenticationUtils->getLastAuthenticationError();
-        $lastUsername = $authenticationUtils->getLastUsername();
+        $username = $authenticationUtils->getLastUsername();
 
         return $this->render('user/login.html.twig', array(
-            'login' => $lastUsername,
+            'login' => $username,
             'error' => $error,
         ));
     }

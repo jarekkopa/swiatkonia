@@ -4,11 +4,12 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use FOS\UserBundle\Entity\User as BaseUser;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserEntityRepository")
  */
-class UserEntity implements UserInterface, \Serializable
+class UserEntity implements BaseUser, UserInterface, \Serializable
 {
     /**
      * @ORM\Id()
