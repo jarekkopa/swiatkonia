@@ -23,6 +23,7 @@ class AdvertController extends Controller
         ->add('adv_category', EntityType::class, [ // tu przypisuję do pola USER z encji CommentEntity dane z innej encji (UserEntity)
             'class' => CategoryEntity::class, // robię to tutaj (jako parametr) - czyli...do pola user z ComemntEnity podpinam cały obiekt UserEntity
         ])
+        ->add('adv_date_added', TextType::class)
         ->add('send', SubmitType::class) // generuję przycisk submit
         ->getForm(); // generuję formularz
     

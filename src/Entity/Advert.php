@@ -33,9 +33,14 @@ class Advert
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\CategoryEntity", inversedBy="advert_id")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $adv_category;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $adv_date_added;
 
     public function getId()
     {
@@ -86,6 +91,18 @@ class Advert
     public function setAdvCategory(?CategoryEntity $adv_category): self
     {
         $this->adv_category = $adv_category;
+
+        return $this;
+    }
+
+    public function getAdvDateAdded(): ?\DateTimeInterface
+    {
+        return $this->adv_date_added;
+    }
+
+    public function setAdvDateAdded(\DateTimeInterface $adv_date_added): self
+    {
+        $this->adv_date_added = $adv_date_added;
 
         return $this;
     }
