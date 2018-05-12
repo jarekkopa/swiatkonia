@@ -1,7 +1,7 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
-advert_new:
+advert_add:
     path: /advert/new
     controller: App\Controller\AdvertController::advertAdd
 
