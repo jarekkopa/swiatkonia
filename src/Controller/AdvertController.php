@@ -11,6 +11,11 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class AdvertController extends Controller
 {
+    public function index()
+    {
+        return $this->render('base.html.twig');
+    }
+
     public function advertAdd(Request $request)
     {
         $category = new Advert(); // tworzę obikt na bazie encji Advert - mam dzięki temu dostęp do wszystkich pól tej encji
@@ -32,7 +37,7 @@ class AdvertController extends Controller
             $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($category); // dodaję do pamięci - coś jak commit. Można zrobić wiele commitów
         $entityManager->flush(); // przesyłam dane do bazy - działa jak push
-        return $this->redirectToRoute('advert_add'); // żeby nie wywalało błędu daję redirect do strony głównej
+        return $this->redirectToRoute('index'); // żeby nie wywalało błędu daję redirect do strony głównej
         }
 
         return $this->render('advert/add.html.twig', [
