@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
+use App\Entity\UserEntity;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,10 +16,12 @@ class UserController extends Controller
 {
     public function userAdd(Request $request)
     {
-        $newUser = new User();
+        $newUser = new UserEntity();
         $form = $this->createFormBuilder($newUser)
-            ->add('login', TextType::class)
+            ->add('username', TextType::class)
             ->add('password', PasswordType::class)
+            ->add('email', TextType::class)
+            ->add('isActive', TextType::class)
             ->add('submit', SubmitType::class)
             ->getForm();
 

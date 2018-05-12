@@ -37,6 +37,11 @@ class UserEntity implements UserInterface, \Serializable
      */
     private $isActive;
 
+    public function __construct()
+    {
+        $this->isActive = true;
+    }
+
     public function getId()
     {
         return $this->id;
@@ -121,5 +126,12 @@ class UserEntity implements UserInterface, \Serializable
             // see section on salt below
             // $this->salt
         ) = unserialize($serialized, ['allowed_classes' => false]);
+    }
+
+    public function getSalt()
+    {
+        // you *may* need a real salt depending on your encoder
+        // see section on salt below
+        return null;
     }
 }
