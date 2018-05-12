@@ -1,14 +1,14 @@
 security:
     encoders:
-        App\Entity\User:
+        App\Entity\UserEntity:
             algorithm: bcrypt
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory: { memory: ~ }
         our_db_provider:
             entity:
-                class: App\Entity\User
-                property: login
+                class: App\Entity\UserEntity
+                property: username
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/

@@ -8,7 +8,7 @@
     <input type="text" id="username" name="_username" value="{{ login }}" />
 
     <label for="password">Hasło:</label>
-    <input type="password" id="password" name="_password" />
+    <input type="password" id="password" name="_password" {{ password }} />
 
     <button type="submit">Zaloguj</button>
 </form>{% endblock %}
