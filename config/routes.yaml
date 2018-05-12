@@ -1,3 +1,6 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+user_add:
+   path: /user/new
+   controller: App\Controller\UserController::add
