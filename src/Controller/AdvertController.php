@@ -7,10 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class AdvertController extends Controller
 {
-    /**
-     * @Route("/advert", name="advert")
-     */
-    public function index()
+    public function advertAdd()
     {
         return $this->render('advert/index.html.twig', [
             'controller_name' => 'AdvertController',
