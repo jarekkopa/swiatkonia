@@ -13,7 +13,12 @@ class AdvertController extends Controller
 {
     public function index()
     {
-        return $this->render('base.html.twig');
+        $adverts = $this->getDoctrine()->getRepository(Advert::class)->findAll(); 
+
+        return $this->render('base.html.twig', [
+            'advert' => $adverts,
+        ]); 
+
     }
 
     public function advertAdd(Request $request)
