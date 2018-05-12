@@ -1,16 +1,27 @@
 security:
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory: { memory: ~ }
+        our_db_provider:
+            entity:
+                class: App\Entity\User
+                property: login
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            pattern:    ^/
+            http_basic: ~
+            provider: our_db_provider
             anonymous: ~
             form_login:
                 login_path: /user/login
                 check_path: /user/login
+                default_target_path: /user/new
 
             # activate different ways to authenticate
 

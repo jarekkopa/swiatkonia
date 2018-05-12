@@ -46,7 +46,7 @@ class UserController extends Controller
 
         return $this->render('user/login.html.twig', array(
             'login' => $lastUsername,
-            'error'         => $error,
+            'error' => $error,
         ));
     }
 }
