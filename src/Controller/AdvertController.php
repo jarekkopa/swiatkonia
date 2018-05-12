@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use App\Entity\AdvertEntity;
+use App\Entity\Advert;
 use Symfony\Component\Form\Extension\Core\Type\{SubmitType, TextType};
 use Symfony\Component\HttpFoundation\Request;
 
@@ -12,7 +12,7 @@ class AdvertController extends Controller
 {
     public function advertAdd(Request $request)
     {
-        $category = new AdvertyEntity(); // tworzę obikt na bazie encji Advert - mam dzięki temu dostęp do wszystkich pól tej encji
+        $category = new Advert(); // tworzę obikt na bazie encji Advert - mam dzięki temu dostęp do wszystkich pól tej encji
 
         // do zmiennej form przypisuję mój cały formularz
         $form = $this->CreateFormBuilder($category) // wywołuję FormBuilder'a, który odpowiada za generowanie formularza
