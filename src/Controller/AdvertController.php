@@ -9,7 +9,7 @@ class AdvertController extends Controller
 {
     public function advertAdd()
     {
-        return $this->render('advert/index.html.twig', [
+        return $this->render('advert/add.html.twig', [
             'controller_name' => 'AdvertController',
         ]);
     }
