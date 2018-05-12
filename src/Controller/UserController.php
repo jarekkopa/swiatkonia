@@ -21,7 +21,6 @@ class UserController extends Controller
             ->add('username', TextType::class)
             ->add('password', PasswordType::class)
             ->add('email', TextType::class)
-            ->add('isActive', TextType::class)
             ->add('submit', SubmitType::class)
             ->getForm();
 
