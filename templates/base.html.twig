@@ -74,14 +74,17 @@
                 <img class="card-img-top" >
                 <div class="card-body">
                     <div class="card-text"> 
-                        <div><h4>{{ adv.getAdvTitle }} </h4></div>
+                        <div>
+                          <h4>{{ adv.getAdvTitle }} </h4>
+                          <a href="#" class="badge badge-success">KATEGORIA: {{ adv.getAdvCategory }}</a>
+                        </div>
                     </div>
                   <p class="card-text">{{ adv.getAdvDescription }}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <button type="button" class="btn btn-sm btn-outline-secondary"><a href="advert/show/{{ adv.getId }}">View</a></button>
                       <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                      <span class="badge badge-success">Success</span>
+                      
                     </div>
                     <small class="text-muted">9 mins</small>
                   </div>
