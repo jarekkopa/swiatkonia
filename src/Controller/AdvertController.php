@@ -11,6 +11,8 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class AdvertController extends Controller
 {
+
+//METODA WYŚWIETLAJĄCA OGŁOSZENIA Z DB NA STRONIE GŁÓWNEJ
     public function index()
     {
         $adverts = $this->getDoctrine()->getRepository(Advert::class)->findAll(); 
@@ -18,9 +20,9 @@ class AdvertController extends Controller
         return $this->render('base.html.twig', [
             'advert' => $adverts,
         ]); 
-
     }
 
+// METODA DODAJĄCA OGŁOSZENIE DO DB
     public function advertAdd(Request $request)
     {
         $category = new Advert(); // tworzę obikt na bazie encji Advert - mam dzięki temu dostęp do wszystkich pól tej encji
@@ -47,6 +49,16 @@ class AdvertController extends Controller
 
         return $this->render('advert/add.html.twig', [
             'form' => $form->createView()
+        ]);
+    }
+
+    // METODA WYŚWIETLAJĄCA OGŁOSZENIE O PODANYM ID
+    public function advertShowId($id)
+    {
+        $advert = $this->getDoctrine()->getRepository(Advert::class)->find($id);
+
+        return $this->render('advert/showid.html.twig', [
+            'adv' => $advert,
         ]);
     }
 }

@@ -4,15 +4,27 @@
 
 {% block content %}
 <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card mb-4 box-shadow">
-                    {{ form_start(form) }}
-                    {{ form_widget(form) }}
-                    {{ form_end(form) }}
-              </div>
-            </div>
-        </div>
+
+  <div class="row">   
+    <div class="col-md-12">
+      <div class="card mb-6 box-shadow">
+        <h2> <p>{{ adv.getAdvTitle }} </p> </h2>
+      </div>
+      <div class="card mb-6 box-shadow">
+        <p> <h2>Kategoria: {{ adv.getAdvCategory }} </h2> </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">   
+    <div class="col-md-12">
+      <div class="card mb-12 box-shadow">
+        {{ adv.getAdvDescription }}
+      </div>
+    </div>
+  </div>
+
+
 </div>
 {% endblock %}
 
