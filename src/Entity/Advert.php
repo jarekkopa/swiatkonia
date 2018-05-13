@@ -37,6 +37,7 @@ class Advert
      */
     private $adv_category;
 
+
     public function getId()
     {
         return $this->id;
@@ -89,4 +90,5 @@ class Advert
 
         return $this;
     }
+
 }
