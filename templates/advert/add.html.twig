@@ -6,10 +6,46 @@
 <div class="container">
           <div class="row">
             <div class="col-md-12">
-              <div class="card mb-4 box-shadow">
-                    {{ form_start(form) }}
-                    {{ form_widget(form) }}
-                    {{ form_end(form) }}
+              <div>
+                {{ form_start(form) }}
+                    {{ form_errors(form) }}
+
+                    <div>
+                        {{ form_label(form.adv_title, 'Tytuł ogłoszenia:') }}
+                    </div>
+                    <div>
+                        {{ form_errors(form.adv_title) }}
+                        {{ form_widget(form.adv_title, {'attr': {'class': 'col-2 col-form-label'}} ) }}
+                    </div>
+                    <div>
+                        {{ form_label(form.adv_description, 'Treść ogłoszenia:') }}
+                    </div>
+                    <div>
+                        {{ form_errors(form.adv_description) }}
+                        {{ form_widget(form.adv_description, {'attr': {'class': 'col-2 col-form-label'}} ) }}
+                    </div>
+                    <div>
+                        {{ form_label(form.price, 'Cena:') }}
+                    </div>
+                    <div>
+                        {{ form_errors(form.price) }}
+                        {{ form_widget(form.price, {'attr': {'class': 'col-2 col-form-label'}}) }}
+                    </div>
+                    <div>
+                        {{ form_label(form.adv_category, 'Kategoria:') }}
+                    </div>
+                    <div>
+                        {{ form_errors(form.adv_category) }}
+                        {{ form_widget(form.adv_category, {'attr': {'class': 'col-2 col-form-label'}}) }}
+                    </div>
+                    <div>
+                      <p></p>
+                    </div>
+                    <div>
+                        {{ form_widget(form.send, {'attr': {'class': 'btn btn-danger'}}) }}
+                    </div>
+
+                {{ form_end(form) }}
               </div>
             </div>
         </div>
