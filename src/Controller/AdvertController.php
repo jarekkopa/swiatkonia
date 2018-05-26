@@ -74,6 +74,7 @@ class AdvertController extends Controller
         ->add('adv_title', TextType::class)
         ->add('adv_description', TextType::class)
         ->add('price', TextType::class)
+        ->add('imageFile', FileType::class) 
         ->add('adv_category', EntityType::class, [
             'class' => CategoryEntity::class,
         ])
@@ -87,6 +88,7 @@ class AdvertController extends Controller
             $advert->setUser($this->getUser());
             $entityManager->persist($advert);
             $entityManager->flush();
+            return $this->redirectToRoute('index'); 
         }
 
         return $this->render('advert/editid.html.twig', [
