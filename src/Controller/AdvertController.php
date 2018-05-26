@@ -63,4 +63,34 @@ class AdvertController extends Controller
             'adv' => $advert,
         ]);
     }
+
+    // METODA UMOŻLIWIAJĄCA EDYCJĘ OGŁOSZENIA O DANYM ID
+    public function advertEdit($id, Request $request)
+    {
+        $advert = $this->getDoctrine()->getRepository(Advert::class)->find($id); // pobieram o głoszenie o danym ID
+
+        $form = $this->CreateFormBuilder($advert) 
+        ->add('adv_title', TextType::class) 
+        ->add('adv_description', TextType::class) 
+        ->add('price', TextType::class) 
+        ->add('adv_category', EntityType::class, [ 
+            'class' => CategoryEntity::class, 
+        ])
+        ->add('send', SubmitType::class) 
+        ->getForm(); 
+    
+        $form->handleRequest($request); 
+    
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $advert->setUser($this->getUser()); 
+        $entityManager->persist($advert); 
+        $entityManager->flush(); 
+        }
+
+        return $this->render('advert/editid.html.twig', [
+            'form' => $form->createView()
+        ]);
+
+    }
 }

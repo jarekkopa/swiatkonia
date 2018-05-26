@@ -7,3 +7,6 @@ advert_add:
 advert_show_id:
     path: /advert/show/{id}
     controller: App\Controller\AdvertController::advertShowId
+advert_edit:
+    path: /advert/edit/{id}
+    controller: App\Controller\AdvertController::advertEdit 
