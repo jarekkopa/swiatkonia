@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use App\Entity\{Advert, CategoryEntity, UserEntity};
+use App\Entity\{Advert, CategoryEntity, UserEntity, RegionEntity};
 use Symfony\Component\Form\Extension\Core\Type\{SubmitType, TextType, FileType};
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -36,6 +36,9 @@ class AdvertController extends Controller
         ->add('imageFile', FileType::class) 
         ->add('adv_category', EntityType::class, [ 
             'class' => CategoryEntity::class, 
+        ])
+        ->add('region_id', EntityType::class, [ 
+            'class' => RegionEntity::class, 
         ])
         ->add('send', SubmitType::class) // generuję przycisk submit
         ->getForm(); // generuję formularz
@@ -78,6 +81,9 @@ class AdvertController extends Controller
         ->add('adv_category', EntityType::class, [
             'class' => CategoryEntity::class,
         ])
+        ->add('region_id', EntityType::class, [ 
+            'class' => RegionEntity::class, 
+        ])
         ->add('send', SubmitType::class)
         ->getForm();
     
@@ -92,7 +98,8 @@ class AdvertController extends Controller
         }
 
         return $this->render('advert/editid.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'adv' => $advert
         ]);
     }
 
