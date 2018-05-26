@@ -1,14 +1,19 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark">
     <div class="container">
         <div>
-            <a class="navbar-brand" href="#">Świat konia</a>
+            <a class="navbar-brand" href="http://127.0.0.1:8000/">Świat konia</a>
         </div>
         <div class="collapse navbar-collapse justify-content-end">
             <ul class="nav navbar-nav">
+                {% if is_granted('ROLE_USER') %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Moje konto</a>
+                    <a class="nav-link" href="http://127.0.0.1:8000/profile/">Moje konto</a>
                 </li>
-                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:8000/register/">Rejestracja</a>
+                </li>
+                {% endif %} {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <li class="nav-item nav-link disabled">
                     {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
                 </li>
@@ -18,7 +23,7 @@
                     </a>
                 </li>
                 {% else %}
-                <li  class="nav-item nav-link">
+                <li class="nav-item nav-link">
                     <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
                 </li>
                 {% endif %}
