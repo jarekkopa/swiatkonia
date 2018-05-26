@@ -43,7 +43,7 @@ class AdvertController extends Controller
     
         if ($form->isSubmitted() && $form->isValid()) { // sprawdzam czy wysłano formularz i czy pola przeszły walidację
             $entityManager = $this->getDoctrine()->getManager();
-            $advert->setUser($this->getUser());
+            $advert->setUser($this->getUser()); // WAŻNE - tutaj dodaje do
         $entityManager->persist($advert); // dodaję do pamięci - coś jak commit. Można zrobić wiele commitów
         $entityManager->flush(); // przesyłam dane do bazy - działa jak push
         return $this->redirectToRoute('index'); // żeby nie wywalało błędu daję redirect do strony głównej
@@ -61,6 +61,35 @@ class AdvertController extends Controller
 
         return $this->render('advert/showid.html.twig', [
             'adv' => $advert,
+        ]);
+    }
+
+    // METODA UMOŻLIWIAJĄCA EDYCJĘ OGŁOSZENIA O DANYM ID
+    public function advertEdit($id, Request $request)
+    {
+        $advert = $this->getDoctrine()->getRepository(Advert::class)->find($id); // pobieram o głoszenie o danym ID
+
+        $form = $this->CreateFormBuilder($advert)
+        ->add('adv_title', TextType::class)
+        ->add('adv_description', TextType::class)
+        ->add('price', TextType::class)
+        ->add('adv_category', EntityType::class, [
+            'class' => CategoryEntity::class,
+        ])
+        ->add('send', SubmitType::class)
+        ->getForm();
+    
+        $form->handleRequest($request);
+    
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $advert->setUser($this->getUser());
+            $entityManager->persist($advert);
+            $entityManager->flush();
+        }
+
+        return $this->render('advert/editid.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 
