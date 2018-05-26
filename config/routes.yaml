@@ -10,3 +10,6 @@ advert_show_id:
 advert_edit:
     path: /advert/edit/{id}
     controller: App\Controller\AdvertController::advertEdit 
+user_adverts:
+    path: advert/showmyadverts
+    controller: App\Controller\AdvertController::showMyAdverts
