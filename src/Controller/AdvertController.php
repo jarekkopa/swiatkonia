@@ -63,4 +63,14 @@ class AdvertController extends Controller
             'adv' => $advert,
         ]);
     }
+
+    public function showMyAdverts()
+    {
+
+        $adverts = $this->getDoctrine()->getRepository(Advert::class)->findBy(array('user'=>$this->getUser()));
+
+        return $this->render('advert/showmyadverts.html.twig', [
+            'advert' => $adverts,
+        ]); 
+    }
 }

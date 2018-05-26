@@ -7,6 +7,10 @@
             <ul class="nav navbar-nav">
                 {% if is_granted('ROLE_USER') %}
                 <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:8000/advert/showmyadverts">Moje ogloszenia</a>
+                </li>
+                {% endif %} {% if is_granted('ROLE_USER') %}
+                <li class="nav-item">
                     <a class="nav-link" href="http://127.0.0.1:8000/profile/">Moje konto</a>
                 </li>
                 {% else %}
