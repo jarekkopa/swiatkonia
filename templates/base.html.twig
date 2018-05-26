@@ -39,11 +39,13 @@
     {% for adv in advert %} 
       <div class="album py-2 bg-light">
         <div class="container">
+        
           <div class="row">
             <div class="col-md-12">
               <div class="card mb-4 box-shadow">
                 <img class="card-img-top" >
                 <div class="card-body">
+                <img class="card-img-right flex-auto d-none d-lg-block" src="{{ asset('img/foto.jpg') }}" height="90" width="150" />
                     <div class="card-text"> 
                         <div>
                           <h4>{{ adv.getAdvTitle }} </h4>
