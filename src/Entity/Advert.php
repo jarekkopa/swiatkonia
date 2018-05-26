@@ -65,6 +65,11 @@ class Advert
      */
     private $imageSize;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\RegionEntity", inversedBy="adverts")
+     */
+    private $region_id;
+
     public function getId()
     {
         return $this->id;
@@ -175,6 +180,18 @@ class Advert
     public function setImageSize(?int $imageSize): self
     {
         $this->imageSize = $imageSize;
+
+        return $this;
+    }
+
+    public function getRegionId(): ?RegionEntity
+    {
+        return $this->region_id;
+    }
+
+    public function setRegionId(?RegionEntity $region_id): self
+    {
+        $this->region_id = $region_id;
 
         return $this;
     }

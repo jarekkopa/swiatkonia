@@ -36,7 +36,20 @@
                     </div>
                     <div>
                         {{ form_errors(form.adv_category) }}
-                        {{ form_widget(form.adv_category, {'attr': {'class': 'col-12 col-form-label'}}) }}
+                        {{ form_widget(form.adv_category, {'attr': {'class': 'col-4 col-form-label'}}) }}
+                    </div>
+                    <div>
+                        {{ form_label(form.region_id, 'Województwo:') }}
+                    </div>
+                    <div>
+                        {{ form_errors(form.region_id) }}
+                        {{ form_widget(form.region_id, {'attr': {'class': 'col-4 col-form-label'}}) }}
+                    </div>
+                    <div>
+                      <p></p>
+                    </div>
+                    <div>
+                        <img class="card-img-right flex-auto d-none d-lg-block" src="/../../img/{{  adv.getImageName }}" height="90" width="150" />
                     </div>
                     <div>
                         {{ form_errors(form.imageFile) }}
