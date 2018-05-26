@@ -22,7 +22,7 @@
     </header>
 
     <main role="main">
-
+  {% if is_granted('ROLE_USER') %}
       <section class="jumbotron text-center">
         <div class="container">
           <h1 class="jumbotron-heading">Dodaj ogłoszenie do bazy SwiatKonia.pl</h1>
@@ -33,6 +33,7 @@
           </p>
         </div>
       </section>
+      {% endif %}
   {% block content %}
 
     {% for adv in advert %} 
