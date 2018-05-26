@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use App\Entity\{Advert, CategoryEntity};
+use App\Entity\{Advert, CategoryEntity, UserEntity};
 use Symfony\Component\Form\Extension\Core\Type\{SubmitType, TextType};
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -25,15 +25,16 @@ class AdvertController extends Controller
 // METODA DODAJĄCA OGŁOSZENIE DO DB
     public function advertAdd(Request $request)
     {
-        $category = new Advert(); // tworzę obikt na bazie encji Advert - mam dzięki temu dostęp do wszystkich pól tej encji
+        
+        $advert = new Advert(); // tworzę obikt na bazie encji Advert - mam dzięki temu dostęp do wszystkich pól tej encji
 
         // do zmiennej form przypisuję mój cały formularz
-        $form = $this->CreateFormBuilder($category) // wywołuję FormBuilder'a, który odpowiada za generowanie formularza
+        $form = $this->CreateFormBuilder($advert) // wywołuję FormBuilder'a, który odpowiada za generowanie formularza
         ->add('adv_title', TextType::class) // generuję pole tekstowe
         ->add('adv_description', TextType::class) // generuję pole tekstowe
         ->add('price', TextType::class) // generuję pole tekstowe
-        ->add('adv_category', EntityType::class, [ // tu przypisuję do pola USER z encji CommentEntity dane z innej encji (UserEntity)
-            'class' => CategoryEntity::class, // robię to tutaj (jako parametr) - czyli...do pola user z ComemntEnity podpinam cały obiekt UserEntity
+        ->add('adv_category', EntityType::class, [ 
+            'class' => CategoryEntity::class, 
         ])
         ->add('send', SubmitType::class) // generuję przycisk submit
         ->getForm(); // generuję formularz
@@ -42,7 +43,8 @@ class AdvertController extends Controller
     
         if ($form->isSubmitted() && $form->isValid()) { // sprawdzam czy wysłano formularz i czy pola przeszły walidację
             $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($category); // dodaję do pamięci - coś jak commit. Można zrobić wiele commitów
+            $advert->setUser($this->getUser());
+        $entityManager->persist($advert); // dodaję do pamięci - coś jak commit. Można zrobić wiele commitów
         $entityManager->flush(); // przesyłam dane do bazy - działa jak push
         return $this->redirectToRoute('index'); // żeby nie wywalało błędu daję redirect do strony głównej
         }
