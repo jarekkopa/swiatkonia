@@ -5,7 +5,7 @@ namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\{Advert, CategoryEntity, UserEntity};
-use Symfony\Component\Form\Extension\Core\Type\{SubmitType, TextType};
+use Symfony\Component\Form\Extension\Core\Type\{SubmitType, TextType, FileType};
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
@@ -35,6 +35,7 @@ class AdvertController extends Controller
         ->add('adv_title', TextType::class) // generuję pole tekstowe
         ->add('adv_description', TextType::class) // generuję pole tekstowe
         ->add('price', TextType::class) // generuję pole tekstowe
+        ->add('imageFile', FileType::class) 
         ->add('adv_category', EntityType::class, [ 
             'class' => CategoryEntity::class, 
         ])
@@ -75,6 +76,7 @@ class AdvertController extends Controller
         ->add('adv_title', TextType::class)
         ->add('adv_description', TextType::class)
         ->add('price', TextType::class)
+        ->add('imageFile', FileType::class) 
         ->add('adv_category', EntityType::class, [
             'class' => CategoryEntity::class,
         ])
@@ -88,6 +90,7 @@ class AdvertController extends Controller
             $advert->setUser($this->getUser());
             $entityManager->persist($advert);
             $entityManager->flush();
+            return $this->redirectToRoute('index'); 
         }
 
         return $this->render('advert/editid.html.twig', [
