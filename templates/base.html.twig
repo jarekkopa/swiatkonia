@@ -36,12 +36,13 @@
     {% endif %} {% block content %}
 
     <div class="container">
-      <div class="row">
+    <div><h2>Nowe ogłoszenia</h2></div>
+      <div class="row">   
         {% for adv in advert %}
-        <div class="card col-3">
-          <img class="card-img-top" src="img/{{ adv.getImageName }}" height="180" width="286" alt="Card image cap">
+        <div class="card" style="width: 14rem;">
+          <img class="card-img-top" src="img/{{ adv.getImageName }}" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">{{ adv.getAdvTitle|slice(0, 21) }} </h5>
+            <h5 class="card-title"> {{ adv.getAdvTitle|slice(0, 18) }}</h5>
             <p class="card-text">{{ adv.getAdvDescription|slice(0, 100) }}</p>
             <p class="card-text">
               <a href="#" class="badge badge-success">KATEGORIA: {{ adv.getAdvCategory|upper }}</a>
