@@ -37,6 +37,12 @@ class Advert
      */
     private $adv_category;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\UserEntity", inversedBy="user_advert")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
 
     public function getId()
     {
@@ -87,6 +93,18 @@ class Advert
     public function setAdvCategory(?CategoryEntity $adv_category): self
     {
         $this->adv_category = $adv_category;
+
+        return $this;
+    }
+
+    public function getUser(): ?UserEntity
+    {
+        return $this->user;
+    }
+
+    public function setUser(?UserEntity $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
