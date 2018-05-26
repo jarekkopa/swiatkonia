@@ -1,4 +1,10 @@
-{% extends 'base.html.twig' %} {% block title %}{% endblock %} {% block content %} {% for adv in advert %}
+{% extends 'base.html.twig' %} 
+
+{% block title %}{% endblock %}
+
+{% block content %} 
+
+{% for adv in advert %}
 <div class="album py-2 bg-light">
     <div class="container">
         <div class="row">
@@ -18,8 +24,9 @@
                                 <button type="button" class="btn btn-sm btn-outline-secondary">
                                     <a href="advert/show/{{ adv.getId }}">View</a>
                                 </button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-
+                                <button type="button" class="btn btn-sm btn-outline-secondary">
+                                    <a href="edit/{{ adv.getId }}">Edit</a>
+                                </button>
                             </div>
                             <small class="text-muted">9 mins</small>
                         </div>

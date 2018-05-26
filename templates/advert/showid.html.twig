@@ -1,14 +1,13 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}{% endblock %}
-
+{% extends 'base.html.twig' %} 
+{% block title %}
+{% endblock %} 
 {% block content %}
 
 <div class="container">
   <div class="row">
     <div class="col">
       <div class="alert alert-info" role="alert">
-        <h2>{{ adv.getAdvTitle|upper }}  </h2>
+        <h2>{{ adv.getAdvTitle|upper }} </h2>
       </div>
     </div>
     <div class="col">
@@ -18,7 +17,7 @@
   <div class="row">
     <div class="col">
       <div class="alert alert-light" role="alert">
-          {{ adv.getAdvDescription }}
+        {{ adv.getAdvDescription }}
       </div>
     </div>
     <div class="col">
@@ -27,4 +26,3 @@
   </div>
 </div>
 {% endblock %}
-

@@ -93,6 +93,7 @@ class AdvertController extends Controller
         ]);
     }
 
+    // METODA UMOŻLIWIAJĄCA WYSWIETLANIE OGLOSZEN DANEGO UZYTKOWNIKA
     public function showMyAdverts()
     {
 
