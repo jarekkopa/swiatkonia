@@ -33,7 +33,7 @@ class AdvertController extends Controller
         ->add('adv_title', TextType::class) // generuję pole tekstowe
         ->add('adv_description', TextType::class) // generuję pole tekstowe
         ->add('price', TextType::class) // generuję pole tekstowe
-        ->add('imageFile', FileType::class) // generuję pole tekstowe
+        ->add('imageFile', FileType::class) 
         ->add('adv_category', EntityType::class, [ 
             'class' => CategoryEntity::class, 
         ])
