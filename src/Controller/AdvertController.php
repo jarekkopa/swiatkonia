@@ -16,9 +16,11 @@ class AdvertController extends Controller
     public function index()
     {
         $adverts = $this->getDoctrine()->getRepository(Advert::class)->findAll(); 
+        $categories = $this->getDoctrine()->getRepository(CategoryEntity::class)->findAll(); 
 
         return $this->render('base.html.twig', [
             'advert' => $adverts,
+            'category' => $categories,
         ]); 
     }
 

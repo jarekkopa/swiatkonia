@@ -36,7 +36,14 @@
     {% endif %} {% block content %}
     <div class="container">
       <div class="row">
-        <div class="col-2">KATEGORIE
+        <div class="col-2">
+          <div>
+            {% block categorylist %} {% for cat in category %}
+            <li>
+              {{cat.getCategoryName|upper }}
+            </li>
+            {% endfor %} {% endblock %}
+          </div>
         </div>
         <div class="col-10">
           {% for adv in advert %}
@@ -62,7 +69,6 @@
                           <button type="button" class="btn btn-sm btn-outline-secondary">
                             <a href="advert/edit/{{ adv.getId }}">Edit</a>
                           </button>
-
                         </div>
                         <small class="text-muted">ID ogłoszenia: {{ adv.getId }} | Dodano: [ tu data ]</small>
                       </div>
