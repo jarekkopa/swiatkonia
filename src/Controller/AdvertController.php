@@ -43,7 +43,7 @@ class AdvertController extends Controller
     
         if ($form->isSubmitted() && $form->isValid()) { // sprawdzam czy wysłano formularz i czy pola przeszły walidację
             $entityManager = $this->getDoctrine()->getManager();
-            $advert->setUser($this->getUser());
+            $advert->setUser($this->getUser()); // WAŻNE - tutaj dodaje do
         $entityManager->persist($advert); // dodaję do pamięci - coś jak commit. Można zrobić wiele commitów
         $entityManager->flush(); // przesyłam dane do bazy - działa jak push
         return $this->redirectToRoute('index'); // żeby nie wywalało błędu daję redirect do strony głównej
