@@ -14,5 +14,5 @@ user_adverts:
     path: advert/showmyadverts
     controller: App\Controller\AdvertController::showMyAdverts
 delete_user:
-    path: profile/delete
-    controller: App\Controller\AdvertController::deleteUser
+    path: profile/delete/{id}
+    controller: App\Controller\UserController::deleteUser
