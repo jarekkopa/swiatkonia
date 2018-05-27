@@ -47,4 +47,20 @@ class AdvertRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function setAdvertInactive()
+    {
+        $date = new \DateTime();
+        \dump($date);
+        $date->modify('-14 day'); 
+        \dump($date);
+
+       $result = $this
+        ->createQueryBuilder('t') 
+        ->andWhere('t.publish_date < :date')
+        ->andWhere('t.is_active = true')
+        ->setParameter(':date', $date)
+        ->getQuery() // wysyłam zapytanie
+        ->execute(); // wykonuję na bazie
+        return $result;
+    }
 }

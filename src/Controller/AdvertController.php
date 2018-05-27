@@ -17,10 +17,13 @@ class AdvertController extends Controller
     public function index()
     {
         $adverts = $this->getDoctrine()->getRepository(Advert::class)->findAll(); 
+        $advert_test = $this->getDoctrine()->getRepository(Advert::class)->setAdvertInactive();
+        \dump($advert_test);
 
         return $this->render('base.html.twig', [
             'advert' => $adverts,
         ]); 
+
     }
 
 // METODA DODAJĄCA OGŁOSZENIE DO DB
