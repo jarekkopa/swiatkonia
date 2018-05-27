@@ -70,6 +70,11 @@ class Advert
      */
     private $region_id;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $is_active;
+
     public function getId()
     {
         return $this->id;
@@ -192,6 +197,18 @@ class Advert
     public function setRegionId(?RegionEntity $region_id): self
     {
         $this->region_id = $region_id;
+
+        return $this;
+    }
+
+    public function isActive(): ?bool
+    {
+        return $this->is_active;
+    }
+
+    public function setActive(bool $is_active): self
+    {
+        $this->is_active = $is_active;
 
         return $this;
     }

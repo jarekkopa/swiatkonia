@@ -46,6 +46,9 @@
                         {{ form_widget(form.region_id, {'attr': {'class': 'col-4 col-form-label'}}) }}
                     </div>
                     <div>
+                        {{ form_label(form.imageFile, 'Zdjęcie:') }}
+                    </div>
+                    <div>
                         {{ form_errors(form.imageFile) }}
                         {{ form_widget(form.imageFile, {'attr': {'class': 'col-8 col-form-label'}}) }}
                     </div>

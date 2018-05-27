@@ -13,3 +13,12 @@ advert_edit:
 user_adverts:
     path: advert/showmyadverts
     controller: App\Controller\AdvertController::showMyAdverts
+advert_remove:
+    path: /advert/remove/{id}
+    controller: App\Controller\AdvertController::advertRemove 
+advert_activate:
+    path: /advert/activate/{id}
+    controller: App\Controller\AdvertController::advertActivate
+advert_deactivate:
+    path: /advert/deactivate/{id}
+    controller: App\Controller\AdvertController::advertDeactivate
