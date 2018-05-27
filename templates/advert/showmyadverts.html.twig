@@ -22,9 +22,13 @@
                             <div class="btn-group">
                                 <button type="button" class="btn btn-sm btn-outline-secondary"><a href="advert/show/{{ adv.getId }}">View</a></button>
                                 <button type="button" class="btn btn-sm btn-outline-secondary"><a href="edit/{{ adv.getId }}">Edit</a></button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary"><a href="#">Activate</a></button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary"><a href="#">Deactivate</a></button>
+                                {% if adv.getIsActive('true') %}
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="#">Deactivate</a></button>
+                                {% else %}
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="#">Activate</a></button>       
+                                {% endif %}
                                 <button type="button" class="btn btn-sm btn-outline-secondary"><a href="remove/{{ adv.getId }}">Remove</a></button>
+                                
                             </div>
                             <small class="text-muted">ID ogłoszenia: {{ adv.getId }} | Dodano: [ tu data ]</small>
                         </div>
