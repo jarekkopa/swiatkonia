@@ -22,17 +22,19 @@
   </header>
 
   <main role="main">
-    {% if is_granted('ROLE_USER') %}
+
     <section class="jumbotron text-center">
       <div class="container">
         <h1 class="jumbotron-heading">Dodaj ogłoszenie do bazy SwiatKonia.pl</h1>
         <p class="lead text-muted">Dodaj darmowe ogłoszenie do naszej bazy ogłoszen jeździeckich SwiatKonia.pl</p>
-        <p>
-          <a href="/advert/new" class="btn btn-primary my-2">Dodaj</a>
-        </p>
+            {% if is_granted('ROLE_USER') %}
+              <p>
+                <a href="/advert/new" class="btn btn-primary my-2">Dodaj</a>
+              </p>
+            {% endif %}
       </div>
     </section>
-    {% endif %}
+
 
     <div class="container">
       <div class="row">
