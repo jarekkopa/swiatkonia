@@ -13,3 +13,6 @@ advert_edit:
 user_adverts:
     path: advert/showmyadverts
     controller: App\Controller\AdvertController::showMyAdverts
+advert_remove:
+    path: /advert/remove/{id}
+    controller: App\Controller\AdvertController::advertRemove 

@@ -112,4 +112,13 @@ class AdvertController extends Controller
             'advert' => $adverts,
         ]); 
     }
+
+    public function advertRemove($id)
+    {
+        $advert = $this->getDoctrine()->getRepository(Advert::class)->find($id);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($advert);
+        $entityManager->flush();
+        return $this->redirectToRoute('user_adverts');
+    }
 }
