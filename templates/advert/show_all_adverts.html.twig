@@ -4,9 +4,10 @@
     <div>
         <h2>Nowe ogłoszenia</h2>
     </div>
+    <div class="card-deck">
     <div class="row">
         {% for adv in advert %} {# wyświetlam tylko aktywne ogłoszenia - mające status isActive = true #} {% if adv.isActive %}
-        <div class="card" style="width: 14rem;">
+        <div class="card" style="min-width: 15rem; max-width: 15rem; margin-bottom: 10px;">
             <img class="card-img-top" src="img/{{ adv.getImageName }}" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title"> {{ adv.getAdvTitle|slice(0, 18) }}</h5>
@@ -18,6 +19,7 @@
             </div>
         </div>
         {% endif %} {% else %} Brak ogłoszen. {% endfor %}
+    </div>
     </div>
 </div>
 {% endblock %}
