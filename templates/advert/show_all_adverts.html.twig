@@ -8,14 +8,18 @@
     <div class="row">
         {% for adv in advert %} {# wyświetlam tylko aktywne ogłoszenia - mające status isActive = true #} {% if adv.isActive %}
         <div class="card" style="min-width: 17rem; max-width: 17rem; margin-bottom: 10px;">
-            <img class="card-img-top" src="img/{{ adv.getImageName }}" alt="Card image cap">
+            <img class="card-img-top" src="img/{{ adv.getImageName }}" style="max-height: 10rem;" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title"> {{ adv.getAdvTitle|slice(0, 18) }}</h5>
                 <p class="card-text">{{ adv.getAdvDescription|slice(0, 100) }}</p>
                 <p class="card-text">
                     <a href="#" class="badge badge-success">KATEGORIA: {{ adv.getAdvCategory|upper }}</a>
                 </p>
+                <p>
+                    <medium class="text-info">Dodano: {{ adv.getPublishDate.format('d-m-Y') }}</medium>
+                </p>
                 <a href="advert/show/{{ adv.getId }}" class="btn btn-primary">Zobacz</a>
+                               
             </div>
         </div>
         {% endif %} {% else %} Brak ogłoszen. {% endfor %}
