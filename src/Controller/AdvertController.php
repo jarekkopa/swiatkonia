@@ -8,6 +8,7 @@ use App\Entity\{Advert, CategoryEntity, UserEntity, RegionEntity};
 use Symfony\Component\Form\Extension\Core\Type\{SubmitType, TextType, FileType};
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class AdvertController extends Controller
 {
@@ -48,6 +49,8 @@ class AdvertController extends Controller
         if ($form->isSubmitted() && $form->isValid()) { // sprawdzam czy wysłano formularz i czy pola przeszły walidację
             $entityManager = $this->getDoctrine()->getManager();
             $advert->setUser($this->getUser()); // WAŻNE - tutaj dodaje do
+            $advert->setActive(true);
+            $advert->setPublishDate(new \DateTime('now'));
         $entityManager->persist($advert); // dodaję do pamięci - coś jak commit. Można zrobić wiele commitów
         $entityManager->flush(); // przesyłam dane do bazy - działa jak push
         return $this->redirectToRoute('index'); // żeby nie wywalało błędu daję redirect do strony głównej
@@ -112,4 +115,35 @@ class AdvertController extends Controller
             'advert' => $adverts,
         ]); 
     }
+
+    // METODA USUWAJĄCA OGŁOSZENIE Z BAZY PO KLIKNIĘCIU PRZEZ UŻYTKOWNIKA
+    public function advertRemove($id)
+    {
+        $advert = $this->getDoctrine()->getRepository(Advert::class)->find($id);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($advert);
+        $entityManager->flush();
+        return $this->redirectToRoute('user_adverts');
+    }
+
+    public function advertActivate($id)
+    {
+        $advert = $this->getDoctrine()->getRepository(Advert::class)->find($id);
+        $entityManager = $this->getDoctrine()->getManager();
+        $advert->setActive(true);
+        $entityManager->persist($advert);
+        $entityManager->flush();
+        return $this->redirectToRoute('user_adverts');
+    }
+
+    public function advertDeactivate($id)
+    {
+        $advert = $this->getDoctrine()->getRepository(Advert::class)->find($id);
+        $entityManager = $this->getDoctrine()->getManager();
+        $advert->setActive(false);
+        $entityManager->persist($advert);
+        $entityManager->flush();
+        return $this->redirectToRoute('user_adverts');
+    }
+
 }
