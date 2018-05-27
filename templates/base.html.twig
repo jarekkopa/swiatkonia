@@ -32,9 +32,19 @@
         </p>
       </div>
     </section>
-    {% endif %} 
-    
-    {% block content %} {% endblock %}
+    {% endif %}
+
+    <div class="container">
+      <div class="row">
+        <div class="col-2">
+          {% include 'category_bar.html.twig' %}
+        </div>
+        <div class="col-10">
+          {% block content %} {% endblock %}
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <footer class="text-muted">
