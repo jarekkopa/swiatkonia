@@ -13,6 +13,9 @@ advert_edit:
 user_adverts:
     path: advert/showmyadverts
     controller: App\Controller\AdvertController::showMyAdverts
+delete_user:
+    path: profile/delete/{id}
+    controller: App\Controller\UserController::deleteUser
 advert_remove:
     path: /advert/remove/{id}
     controller: App\Controller\AdvertController::advertRemove 
