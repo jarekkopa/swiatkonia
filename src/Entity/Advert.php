@@ -75,6 +75,11 @@ class Advert
      */
     private $is_active;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $publish_date;
+
     public function getId()
     {
         return $this->id;
@@ -209,6 +214,18 @@ class Advert
     public function setActive(bool $is_active): self
     {
         $this->is_active = $is_active;
+
+        return $this;
+    }
+
+    public function getPublishDate(): ?\DateTimeInterface
+    {
+        return $this->publish_date;
+    }
+
+    public function setPublishDate(?\DateTimeInterface $publish_date): self
+    {
+        $this->publish_date = $publish_date;
 
         return $this;
     }
