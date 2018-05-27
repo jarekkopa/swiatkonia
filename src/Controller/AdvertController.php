@@ -50,6 +50,7 @@ class AdvertController extends Controller
             $entityManager = $this->getDoctrine()->getManager();
             $advert->setUser($this->getUser()); // WAŻNE - tutaj dodaje do
             $advert->setActive(true);
+            $advert->setPublishDate(new \DateTime('now'));
         $entityManager->persist($advert); // dodaję do pamięci - coś jak commit. Można zrobić wiele commitów
         $entityManager->flush(); // przesyłam dane do bazy - działa jak push
         return $this->redirectToRoute('index'); // żeby nie wywalało błędu daję redirect do strony głównej
