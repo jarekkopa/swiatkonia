@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %} {% block title %}{% endblock %} {% block content %}
+
+<div class="container">
+    <div>
+        <h2>Nowe ogłoszenia</h2>
+    </div>
+    <div class="card-deck">
+    <div class="row">
+        {% for adv in advert %} {# wyświetlam tylko aktywne ogłoszenia - mające status isActive = true #} {% if adv.isActive %}
+        <div class="card" style="min-width: 15rem; max-width: 15rem; margin-bottom: 10px;">
+            <img class="card-img-top" src="img/{{ adv.getImageName }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title"> {{ adv.getAdvTitle|slice(0, 18) }}</h5>
+                <p class="card-text">{{ adv.getAdvDescription|slice(0, 100) }}</p>
+                <p class="card-text">
+                    <a href="#" class="badge badge-success">KATEGORIA: {{ adv.getAdvCategory|upper }}</a>
+                </p>
+                <a href="advert/show/{{ adv.getId }}" class="btn btn-primary">Zobacz</a>
+            </div>
+        </div>
+        {% endif %} {% else %} Brak ogłoszen. {% endfor %}
+    </div>
+    </div>
+</div>
+{% endblock %}

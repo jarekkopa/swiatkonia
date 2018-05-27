@@ -20,7 +20,7 @@ class AdvertController extends Controller
         $advert_test = $this->getDoctrine()->getRepository(Advert::class)->setAdvertInactive();
         \dump($advert_test);
 
-        return $this->render('base.html.twig', [
+        return $this->render('advert/show_all_adverts.html.twig', [
             'advert' => $adverts,
         ]); 
 

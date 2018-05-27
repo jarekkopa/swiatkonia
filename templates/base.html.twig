@@ -29,40 +29,13 @@
         <p class="lead text-muted">Dodaj darmowe ogłoszenie do naszej bazy ogłoszen jeździeckich SwiatKonia.pl</p>
         <p>
           <a href="/advert/new" class="btn btn-primary my-2">Dodaj</a>
-          <!--<a href="#" class="btn btn-secondary my-2">Secondary action</a>-->
         </p>
       </div>
     </section>
-    {% endif %} {% block content %}
-
-    <div class="container">
-    <div><h2>Nowe ogłoszenia</h2></div>
-      <div class="row">   
-        {% for adv in advert %}
-        {# wyświetlam tylko aktywne ogłoszenia - mające status isActive = true #}
-          {% if adv.isActive %} 
-            <div class="card" style="width: 14rem;">
-              <img class="card-img-top" src="img/{{ adv.getImageName }}" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title"> {{ adv.getAdvTitle|slice(0, 18) }}</h5>
-                <p class="card-text">{{ adv.getAdvDescription|slice(0, 100) }}</p>
-                <p class="card-text">
-                  <a href="#" class="badge badge-success">KATEGORIA: {{ adv.getAdvCategory|upper }}</a>
-                </p>
-                <a href="advert/show/{{ adv.getId }}" class="btn btn-primary">Zobacz</a>
-              </div>
-            </div>
-            
-            {% endif %}
-
-            {% else %} Brak ogłoszen. 
-        
-        {% endfor %}
-      </div>
-    </div>
-    {% endblock %}
+    {% endif %} 
+    
+    {% block content %} {% endblock %}
   </main>
-
 
   <footer class="text-muted">
     <div class="container">
