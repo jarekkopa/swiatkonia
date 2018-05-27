@@ -201,12 +201,12 @@ class Advert
         return $this;
     }
 
-    public function getIsActive(): ?bool
+    public function isActive(): ?bool
     {
         return $this->is_active;
     }
 
-    public function setIsActive(bool $is_active): self
+    public function setActive(bool $is_active): self
     {
         $this->is_active = $is_active;
 
