@@ -18,7 +18,7 @@ class AdvertController extends Controller
     {
         $adverts = $this->getDoctrine()->getRepository(Advert::class)->findAll(); 
 
-        return $this->render('base.html.twig', [
+        return $this->render('advert/show_all_adverts.html.twig', [
             'advert' => $adverts,
         ]); 
     }
