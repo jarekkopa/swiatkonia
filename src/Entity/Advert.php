@@ -80,6 +80,11 @@ class Advert
      */
     private $publish_date;
 
+    public function __toString()
+    {
+        return $this->getPublishDate();
+    }
+
     public function getId()
     {
         return $this->id;
