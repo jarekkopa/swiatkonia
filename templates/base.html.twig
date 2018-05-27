@@ -39,7 +39,8 @@
     <div><h2>Nowe ogłoszenia</h2></div>
       <div class="row">   
         {% for adv in advert %}
-          {% if adv.isActive %}
+        {# wyświetlam tylko aktywne ogłoszenia - mające status isActive = true #}
+          {% if adv.isActive %} 
             <div class="card" style="width: 14rem;">
               <img class="card-img-top" src="img/{{ adv.getImageName }}" alt="Card image cap">
               <div class="card-body">
