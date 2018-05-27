@@ -128,7 +128,7 @@ class AdvertController extends Controller
     {
         $advert = $this->getDoctrine()->getRepository(Advert::class)->find($id);
         $entityManager = $this->getDoctrine()->getManager();
-        $advert->setIsActive(true);
+        $advert->setActive(true);
         $entityManager->persist($advert);
         $entityManager->flush();
         return $this->redirectToRoute('user_adverts');
