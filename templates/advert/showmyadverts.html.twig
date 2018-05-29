@@ -8,7 +8,7 @@
                     <div class="card-body">
                         <div class="row">
                         <div class="col-2">
-                            <img class="card-img-right flex-auto d-none d-lg-block" src="../img/{{ adv.getImageName }}" height="80" />
+                            <img class="card-img-right flex-auto d-none d-lg-block" src="{{ asset('img/')}}{{ adv.getImageName }}" height="80" />
                         </div>
                         <div class="col-10">
                         <div class="card-text">
@@ -20,14 +20,14 @@
                         <p class="card-text">{{ adv.getAdvDescription|slice(0, 100) }}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary"><a href="advert/show/{{ adv.getId }}">View</a></button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary"><a href="edit/{{ adv.getId }}">Edit</a></button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{{ path('advert_show_id', {'id': adv.getId}) }} ">View</a></button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{{ path('advert_edit', {'id': adv.getId}) }}">Edit</a></button>
                                 {% if adv.isActive() %}
-                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="/advert/deactivate/{{ adv.getId }}">Deactivate</a></button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{{ path('advert_deactivate', {'id': adv.getId}) }} ">Deactivate</a></button>
                                 {% else %}
-                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="/advert/activate/{{ adv.getId }}">Activate</a></button>       
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{{ path('advert_activate', {'id': adv.getId}) }} ">Activate</a></button>       
                                 {% endif %}
-                                <button type="button" class="btn btn-sm btn-outline-secondary"><a href="remove/{{ adv.getId }}">Remove</a></button>      
+                                <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{{ path('advert_remove', {'id': adv.getId}) }} ">Remove</a></button>      
                             </div>
                             <small class="text-muted">ID ogłoszenia: {{ adv.getId }} | Dodano:  {{ adv.getPublishDate.format('Y-m-d H:i:s') }} </small>
                         </div>
