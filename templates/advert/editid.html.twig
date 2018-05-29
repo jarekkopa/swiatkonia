@@ -49,7 +49,7 @@
                       <p></p>
                     </div>
                     <div>
-                        <img class="card-img-right flex-auto d-none d-lg-block" src="/../../img/{{  adv.getImageName }}" height="90" width="150" />
+                        <img class="card-img-right flex-auto d-none d-lg-block" src="{{ asset('img/')}}{{  adv.getImageName }}" height="90" width="150" />
                     </div>
                     <div>
                         {{ form_errors(form.imageFile) }}
