@@ -29,7 +29,7 @@
         <p class="lead text-muted">Dodaj darmowe ogłoszenie do naszej bazy ogłoszen jeździeckich SwiatKonia.pl</p>
             {% if is_granted('ROLE_USER') %}
               <p>
-                <a href="/advert/new" class="btn btn-primary my-2">Dodaj</a>
+                <a href="{{path('advert_add')}}" class="btn btn-primary my-2">Dodaj</a>
               </p>
             {% endif %}
       </div>
