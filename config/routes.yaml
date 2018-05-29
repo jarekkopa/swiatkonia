@@ -7,21 +7,33 @@ advert_add:
 advert_show_id:
     path: /advert/show/{id}
     controller: App\Controller\AdvertController::advertShowId
+    requirements:
+        id: '\d+'
 advert_edit:
     path: /advert/edit/{id}
     controller: App\Controller\AdvertController::advertEdit 
+    requirements:
+        id: '\d+'
 user_adverts:
     path: advert/showmyadverts
     controller: App\Controller\AdvertController::showMyAdverts
 delete_user:
     path: profile/delete/{id}
     controller: App\Controller\UserController::deleteUser
+    requirements:
+        id: '\d+'
 advert_remove:
     path: /advert/remove/{id}
     controller: App\Controller\AdvertController::advertRemove 
+    requirements:
+        id: '\d+'
 advert_activate:
     path: /advert/activate/{id}
     controller: App\Controller\AdvertController::advertActivate
+    requirements:
+        id: '\d+'
 advert_deactivate:
     path: /advert/deactivate/{id}
     controller: App\Controller\AdvertController::advertDeactivate
+    requirements:
+        id: '\d+'
