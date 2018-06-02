@@ -80,6 +80,11 @@ class Advert
      */
     private $publish_date;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\SubcategoryEntity", inversedBy="adverts")
+     */
+    private $subcategory;
+
     public function __toString()
     {
         return $this->getPublishDate();
@@ -231,6 +236,18 @@ class Advert
     public function setPublishDate(?\DateTimeInterface $publish_date): self
     {
         $this->publish_date = $publish_date;
+
+        return $this;
+    }
+
+    public function getSubcategory(): ?SubcategoryEntity
+    {
+        return $this->subcategory;
+    }
+
+    public function setSubcategory(?SubcategoryEntity $subcategory): self
+    {
+        $this->subcategory = $subcategory;
 
         return $this;
     }
