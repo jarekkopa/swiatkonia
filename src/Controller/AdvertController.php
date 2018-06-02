@@ -17,13 +17,18 @@ class AdvertController extends Controller
 //METODA WYŚWIETLAJĄCA OGŁOSZENIA Z DB NA STRONIE GŁÓWNEJ
     public function index()
     {
+        // pobranie ogłoszen
         $adverts = $this->getDoctrine()->getRepository(Advert::class)->findAll(); 
-        $advert_test = $this->getDoctrine()->getRepository(Advert::class)->setAdvertInactive();
-        \dump($advert_test);
+        
+        // $advert_test = $this->getDoctrine()->getRepository(Advert::class)->setAdvertInactive();
+        // \dump($advert_test);
+
+        // pobranie kategorii menu
+        $categories = $this->getDoctrine()->getRepository(CategoryEntity::class)->findAll();
 
         return $this->render('advert/show_all_adverts.html.twig', [
             'advert' => $adverts,
-        ]); 
+            'categories' => $categories]); 
 
     }
 
@@ -43,7 +48,7 @@ class AdvertController extends Controller
             'class' => CategoryEntity::class, 
         ])
 
-        ->add('adv_category', CategoryType::class)
+        // ->add('adv_category', CategoryType::class)
 
         ->add('region_id', EntityType::class, [ 
             'class' => RegionEntity::class, 
