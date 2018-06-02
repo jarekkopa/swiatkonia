@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\{Advert, CategoryEntity, UserEntity, RegionEntity};
+use App\Form\Type\CategoryType;
 use Symfony\Component\Form\Extension\Core\Type\{SubmitType, TextType, FileType};
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -41,6 +42,9 @@ class AdvertController extends Controller
         ->add('adv_category', EntityType::class, [ 
             'class' => CategoryEntity::class, 
         ])
+
+        ->add('adv_category', CategoryType::class)
+
         ->add('region_id', EntityType::class, [ 
             'class' => RegionEntity::class, 
         ])

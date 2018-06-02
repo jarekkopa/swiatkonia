@@ -1,12 +1,11 @@
-<?
-namespace App\Forms\Type;
+<?php
+namespace App\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-
 
 class CategoryType extends AbstractType
 {
@@ -26,6 +25,7 @@ class CategoryType extends AbstractType
 
                 // this would be your entity
                 $data = $event->getData();
+                \dump($event); die();
 
                 $category = $data->getAdvCategory();
                 $subcategory = null === $category ? array() : $category->getSubcategory();
