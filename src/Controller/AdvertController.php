@@ -19,9 +19,6 @@ class AdvertController extends Controller
     {
         // pobranie ogłoszen
         $adverts = $this->getDoctrine()->getRepository(Advert::class)->findAll(); 
-        
-        // $advert_test = $this->getDoctrine()->getRepository(Advert::class)->setAdvertInactive();
-        // \dump($advert_test);
 
         // pobranie kategorii menu
         $categories = $this->getDoctrine()->getRepository(CategoryEntity::class)->findAll();

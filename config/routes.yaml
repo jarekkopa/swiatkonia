@@ -38,7 +38,7 @@ advert_deactivate:
     requirements:
         id: '\d+'
 category_show_all_ads:
-    path: show_adverts/category/{id}
+    path: category/show_all_adverts/{id}
     controller: App\Controller\CategoryController::showCategoryAllAdverts
     requirements:
         id: '\d+'
