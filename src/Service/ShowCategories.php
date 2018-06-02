@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Entity\CategoryEntity;
 use Doctrine\ORM\EntityManagerInterface;
 
 class ShowCategories extends \Twig_Extension
@@ -12,6 +13,7 @@ class ShowCategories extends \Twig_Extension
    public function __construct(EntityManagerInterface $em)
    {
       $this->em = $em;
+    //   $this->addGlobal('categories', $this->em->getRepository(CategoryEntity::class)->findAll());
    }
 
    public function getCategories()
@@ -25,5 +27,6 @@ class ShowCategories extends \Twig_Extension
    {
       return "CategoryEntity:ShowCategories";
    }
+
 
 }
