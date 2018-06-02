@@ -22,19 +22,21 @@ class CategoryType extends AbstractType
             FormEvents::PRE_SET_DATA,
             function (FormEvent $event) {
                 $form = $event->getForm();
-
+                
                 // this would be your entity
                 $data = $event->getData();
-                \dump($event); die();
 
-                $category = $data->getAdvCategory();
-                $subcategory = null === $category ? array() : $category->getSubcategory();
+                if ($data) {
+                    $category = $data->getAdvCategory();
+                    
+                    $subcategory = null === $category ? array() : $category->getSubcategory();
 
-                $form->add('subcategory', EntityType::class, array(
-                    'class' => 'App\Entity\SubcategoryEntity',
-                    'placeholder' => '',
-                    'choices' => $subcategory,
-                ));
+                    $form->add('subcategory', EntityType::class, array(
+                        'class' => 'App\Entity\SubcategoryEntity',
+                        'placeholder' => '',
+                        'choices' => $subcategory,
+                    ));
+                }
             }
         );
     }
