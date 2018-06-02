@@ -1,9 +1,14 @@
+{% if categories is defined %}
 <div>
     <ul class="list-group">
         <li class="list-group-item list-group-item-primary">Kategorie</li>
-        {% for category in categories %}
-        <li class="list-group-item"><a href="{{ path('category_show_all_ads', {'id': category.getId}) }}">{{ category.getCategoryName }}</a></li>
+        {% for category in categories  %}
+        <li class="list-group-item">
+            <a href="{{ path('category_show_all_ads', {'id': category.getId}) }}">{{ category.getCategoryName }}</a>
+            <span class="badge badge-primary badge-pill">14</span>
+        </li>
         {% endfor %}
         {{ dump(categories) }}
     </ul>
 </div>
+{% endif %}

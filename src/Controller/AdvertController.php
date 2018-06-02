@@ -20,13 +20,9 @@ class AdvertController extends Controller
         // pobranie ogłoszen
         $adverts = $this->getDoctrine()->getRepository(Advert::class)->findAll(); 
 
-        // pobranie kategorii menu
-        $categories = $this->getDoctrine()->getRepository(CategoryEntity::class)->findAll();
-
         return $this->render('advert/show_all_adverts.html.twig', [
             'advert' => $adverts,
-            'categories' => $categories]); 
-
+        ]);
     }
 
 // METODA DODAJĄCA OGŁOSZENIE DO DB

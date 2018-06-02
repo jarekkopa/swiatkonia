@@ -2,6 +2,10 @@
 
 {% block title %}{% endblock %} 
 
+{% block menu_left %}
+    Tu ma być menu Kategorii
+    {# {% include '../category_menu.html.twig' %} #}
+{% endblock %}
 {% block content %} 
     {% for adv in adverts %}
         {{ adv.getAdvTitle }}

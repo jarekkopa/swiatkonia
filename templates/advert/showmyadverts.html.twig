@@ -1,4 +1,11 @@
-{% extends 'base.html.twig' %} {% block title %}{% endblock %} {% block content %} {% for adv in advert %}
+{% extends 'base.html.twig' %} 
+{% block title %}{% endblock %} 
+{% block menu_left %}
+    Tu ma być menu
+    {# {% include '../category_menu.html.twig' %} #}
+{% endblock %}
+{% block content %} 
+{% for adv in advert %}
 <div class="album py-2 bg-light">
     <div class="container">
         <div class="row">
