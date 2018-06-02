@@ -28,9 +28,15 @@ class CategoryEntity
      */
     private $advert_id;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\SubcategoryEntity", mappedBy="categoryId")
+     */
+    private $subcategoryEntities;
+
     public function __construct()
     {
         $this->advert_id = new ArrayCollection();
+        $this->subcategoryEntities = new ArrayCollection();
     }
 
     public function getId()
@@ -80,6 +86,37 @@ class CategoryEntity
             // set the owning side to null (unless already changed)
             if ($advertId->getAdvCategory() === $this) {
                 $advertId->setAdvCategory(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|SubcategoryEntity[]
+     */
+    public function getSubcategoryEntities(): Collection
+    {
+        return $this->subcategoryEntities;
+    }
+
+    public function addSubcategoryEntity(SubcategoryEntity $subcategoryEntity): self
+    {
+        if (!$this->subcategoryEntities->contains($subcategoryEntity)) {
+            $this->subcategoryEntities[] = $subcategoryEntity;
+            $subcategoryEntity->setCategoryId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSubcategoryEntity(SubcategoryEntity $subcategoryEntity): self
+    {
+        if ($this->subcategoryEntities->contains($subcategoryEntity)) {
+            $this->subcategoryEntities->removeElement($subcategoryEntity);
+            // set the owning side to null (unless already changed)
+            if ($subcategoryEntity->getCategoryId() === $this) {
+                $subcategoryEntity->setCategoryId(null);
             }
         }
 
