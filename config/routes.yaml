@@ -37,3 +37,6 @@ advert_deactivate:
     controller: App\Controller\AdvertController::advertDeactivate
     requirements:
         id: '\d+'
+adverts_category:
+    path: adverts/category/{id}
+    controller: App\Controller\AdvertController::showCategoryAdverts

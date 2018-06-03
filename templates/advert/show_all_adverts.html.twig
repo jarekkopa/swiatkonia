@@ -13,7 +13,17 @@
                 <h5 class="card-title"> {{ adv.getAdvTitle|slice(0, 18) }}</h5>
                 <p class="card-text">{{ adv.getAdvDescription|slice(0, 100) }}</p>
                 <p class="card-text">
-                    <a href="#" class="badge badge-success">KATEGORIA: {{ adv.getAdvCategory|upper }}</a>
+                    {% if adv.getAdvCategory.getId == "1" %}
+                        <a href="{{ path('adverts_category', {'id': adv.getAdvCategory.getId }) }} " class="badge badge-primary">KATEGORIA: {{ adv.getAdvCategory|upper }}</a>
+                    {% elseif adv.getAdvCategory.getId == "2" %}
+                        <a href="{{ path('adverts_category', {'id': adv.getAdvCategory.getId }) }} " class="badge badge-danger">KATEGORIA: {{ adv.getAdvCategory|upper }}</a>
+                    {% elseif adv.getAdvCategory.getId == "3" %}
+                        <a href="{{ path('adverts_category', {'id': adv.getAdvCategory.getId }) }} " class="badge badge-warning">KATEGORIA: {{ adv.getAdvCategory|upper }}</a>
+                    {% elseif adv.getAdvCategory.getId == "4" %}
+                        <a href="{{ path('adverts_category', {'id': adv.getAdvCategory.getId }) }} " class="badge badge-dark">KATEGORIA: {{ adv.getAdvCategory|upper }}</a>
+                    {% else %}
+                        <a href="{{ path('adverts_category', {'id': adv.getAdvCategory.getId }) }} " class="badge badge-secondary">KATEGORIA: {{ adv.getAdvCategory|upper }}</a>
+                    {% endif %}
                 </p>
                 <p>
                     <medium class="text-info">Dodano: {{ adv.getPublishDate.format('d-m-Y') }}</medium>

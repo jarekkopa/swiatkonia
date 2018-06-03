@@ -149,4 +149,14 @@ class AdvertController extends Controller
         return $this->redirectToRoute('user_adverts');
     }
 
+    public function showCategoryAdverts($id)
+    {
+
+        $advert = $this->getDoctrine()->getRepository(Advert::class)->findBy([
+            'adv_category' => $id,
+            ]);
+        return $this->render('advert/show_category_adverts.html.twig', [
+            'advert' => $advert,
+        ]);
+    }
 }
